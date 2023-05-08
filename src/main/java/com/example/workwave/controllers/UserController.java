@@ -18,6 +18,7 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.annotation.PostConstruct;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import javax.persistence.EntityNotFoundException;
@@ -45,10 +46,10 @@ public class UserController {
     private OtpRepository otpRepository;
     @Autowired
     private JavaMailSender mailSender;
-   /* @PostConstruct //lors de l'execution
+   @PostConstruct //lors de l'execution
     public void initRoleAndUser() {
         userService.initRolesAndUser();
-    }*/
+    }
 
 
     @GetMapping(path = "/ImgUsers/{userName}")
