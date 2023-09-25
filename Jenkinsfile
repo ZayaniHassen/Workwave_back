@@ -81,26 +81,17 @@ pipeline {
  //    }
 	 
 
- //    stage ('NEXUS DEPLOY') {
-	// when {
- //         expression {
- //          (params.CHANGE_ID != null)  && (targetBranch == 'main')
-	// }
-	//    }
- //       steps {
- //       sh 'mvn deploy -DskipTests'
- //      }
- //    }
-	  stage ('NEXUS DEPLOY') {
+    stage ('NEXUS DEPLOY') {
 	when {
          expression {
-          (params.CHANGE_ID != null)  && ((targetBranch == 'main') || (targetBranch == 'staging'))
+          (params.CHANGE_ID != null)  && (targetBranch == 'main')
 	}
 	   }
        steps {
        sh 'mvn deploy -DskipTests'
       }
     }
+	  
 
     stage('Build Docker') {
     when {
